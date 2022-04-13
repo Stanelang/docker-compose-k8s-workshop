@@ -1,0 +1,20 @@
+version: "3.0"
+services:
+  db:
+    build: ../../db
+    image: ignema/wordsmith-db
+    ports:
+      - 5432:5432
+  api:
+    build: ../../api
+    image: ignema/wordsmith-api
+    ports:
+      - 8080:8080
+    depends_on: 
+      - db
+  web:
+    build: ../../web
+    image: ignema/wordsmith-web
+    ports:
+      - 9191:80
+
